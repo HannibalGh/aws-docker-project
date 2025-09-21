@@ -1,0 +1,42 @@
+# Python cache/build
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.build/
+build/
+dist/
+*.log
+
+# Virtual env & env files
+.venv/
+.env
+.env.*
+
+# Test/coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Linters/type checkers (add if you use them)
+.mypy_cache/
+.ruff_cache/
+.pytype/
+
+# Editors/IDE (keep .vscode if you want to commit launch.json)
+.vscode/
+.idea/
+*.code-workspace
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project artifacts
+function.zip
+run_lambda_local.py
+_zippeek/   # temp folder if you expand the zip to inspect
