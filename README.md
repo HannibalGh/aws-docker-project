@@ -61,17 +61,17 @@ Compress-Archive -Path src -DestinationPath function.zip -Force
 ```
 **2. Create function (via AWS Console)**
 
-- Lambda → Create function → Author from scratch
+- Lambda → Create function → Author from scratch → Save
 
-- Name: lambda-data-api
+  - `Name: lambda-data-api`
 
-- Runtime: Python 3.12 → Create
+  - `Runtime: Python 3.12` 
 
 **3. Upload & set handler**
 
 - Code → Upload `function.zip` → Deploy
 
-- Runtime settings → Edit → Handler: src.lambda_handler.handler → Save
+- Runtime settings → Edit → `Handler: src.lambda_handler.handler` → Save
 
 **4. Function URL**
 
@@ -82,6 +82,7 @@ Compress-Archive -Path src -DestinationPath function.zip -Force
 **5. Test**
 - Via browser: Paste Function URL directly into browser
 
+OR Alternatively, 
 - Via Git Bash terminal:
 ```bash
 curl.exe "<YOUR_FUNCTION_URL>"

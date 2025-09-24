@@ -1,5 +1,5 @@
 import random
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 
 
 def _dedupe_sorted(values):
@@ -27,5 +27,5 @@ def build_payload_dict():
                 "unique": unique
             }
         },
-        "timestamp": datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S %Z")
+        "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
     }
