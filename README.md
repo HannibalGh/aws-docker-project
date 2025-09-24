@@ -1,12 +1,22 @@
-# Docker + AWS Lambda: Dual Runtime (CI-first)
+# Docker + AWS Lambda: Dual Runtime
 
-This project extends my earlier **Flask + Docker** API by reusing the same core logic and exposing it in two runtimes:
+A tiny JSON API that generates a random dataset, returns sorted/unique views, and stamps a UTC timestamp.  
+It’s implemented once in Python and exposed via **two runtimes**:
 
-- **Flask in Docker** – local development/testing with a containerised web app  
-- **AWS Lambda** – serverless handler returning the exact same JSON
+- **Flask in Docker** – for local development and simple containerized deploys  
+- **AWS Lambda** – a serverless handler that returns the same JSON payload  
 
-The goal is to show how the **same Python logic** can run in both containerised and serverless environments, with shared tests and CI.
+The project demonstrates how to share core logic across runtimes, keep tests in one place, and ship consistent outputs.
 
+## Features
+
+- Single source of truth for the response builder (`/app/core/payload.py`)  
+- **Flask** app with `/data`, `/healthz`, `/readyz`  
+- **Lambda** handler returning the same JSON as `/data`  
+- UTC timestamps (`YYYY-MM-DD HH:MM:SS UTC`)  
+- Pytest suite covering shape, ranges, sorting, dedupe, timestamp format  
+- Dockerfile with non-root user, env-driven host/port  
+- CI (GitHub Actions) runs tests and builds the Docker image on every push/PR
 ---
 
 ## Project structure
@@ -26,14 +36,6 @@ aws-docker-project/
 ├── .gitignore
 └── function.zip # (ignored) built only when deploying Lambda
 ```
-
-## What’s new (vs. previous project)
-- Added `src/core.py` that centralises logic shared by Flask and Lambda.
-- Added `src/web_app.py` (Flask wrapper) for container runtime.  
-- Added `src/lambda_handler.py` (Lambda adapter) for AWS runtime.  
-- Test suite (`tests/`) with pytest for core logic.  
-- CI (GitHub Actions) runs tests and builds the Docker image on every push/PR
-
 ## Prerequisites
 
 - Docker Desktop
